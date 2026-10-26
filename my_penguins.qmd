@@ -22,11 +22,3 @@ penguins |>
     count = n()
   )
 ```
-## Penguin Plot
-
-```{r}
-#| warning: false
-ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g, color = species)) +
-  geom_point() +
-  labs(title = "Flipper Length vs. Body Mass")
-```
