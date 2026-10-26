@@ -1,5 +1,6 @@
 ---
 title: "my_penguins"
+format: html
 ---
 
 ## Quarto
@@ -7,5 +8,25 @@ title: "my_penguins"
 Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
 
 ```{r}
-1 + 1
+#| message: false
+#| warning: false
+library(tidyverse)
+library(palmerpenguins)
+```
+
+```{r}
+penguins |>
+  group_by(species) |>
+  summarize(
+    mean_mass = mean(body_mass_g, na.rm = TRUE),
+    count = n()
+  )
+```
+## Penguin Plot
+
+```{r}
+#| warning: false
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g, color = species)) +
+  geom_point() +
+  labs(title = "Flipper Length vs. Body Mass")
 ```
